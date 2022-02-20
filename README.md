@@ -12,6 +12,7 @@ The folders are organized in:
   - OpenAPI specification
 - Diagrams
   - Use cases
+  - Entity
 - Guides
   - Colors
 - Media
