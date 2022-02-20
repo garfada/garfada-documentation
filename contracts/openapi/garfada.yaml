@@ -1,0 +1,461 @@
+openapi: 3.0.0
+info:
+  title: Garfada
+  description: |
+    API documentation to Garfada's server.
+  version: 1.0.0
+  license:
+    name: MIT
+  contact:
+    email: garfada@protonmail.com
+servers:
+  - url: https://api.garfada.example/v1
+paths:
+  /api/businesses:
+    get:
+      summary: "Get businesses"
+      parameters:
+        - name: from
+          schema:
+            type: integer
+            example: 0
+          in: query
+        - name: until
+          schema:
+            type: integer
+            example: 10
+          in: query
+      responses:
+        200:
+          description: "Success to get businesses"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/BusinessResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500: 
+          $ref: "#/components/responses/InternalErrorResponse"
+    post:
+      summary: "Create a business"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BusinessRequestModel"
+      responses:
+        201:
+          description: "Success create business"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BusinessResponseModel"
+        401: 
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500: 
+          $ref: "#/components/responses/InternalErrorResponse"
+    put:
+      summary: "Update a business"
+      parameters:
+        - name: id
+          schema:
+            type: integer
+            example: 0
+          in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BusinessRequestModel"
+      responses:
+        202:
+          description: "Success update business"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BusinessResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500: 
+          $ref: "#/components/responses/InternalErrorResponse"
+    delete:
+      summary: "Delete a business"
+      parameters:
+        - name: id
+          schema:
+            type: integer
+            example: 0
+          in: query
+      responses:
+        204:
+          description: "Success delete business"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BusinessResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500: 
+          $ref: "#/components/responses/InternalErrorResponse"
+  /api/employees:
+    get:
+      summary: "Get employees"
+      parameters:
+        - name: from
+          schema:
+            type: integer
+            example: 0
+          in: query
+        - name: until
+          schema:
+            type: integer
+            example: 10
+          in: query
+      responses:
+        200: 
+          $ref: "#/components/responses/OkResponse"
+        401: 
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500: 
+          $ref: "#/components/responses/InternalErrorResponse"
+    post:
+      summary: "Create a employee"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmployeeRequestModel"
+      responses:
+        201:
+          description: "Success create an employee"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmployeeResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500:
+          $ref: "#/components/responses/InternalErrorResponse"
+    put:
+      summary: "Update a employee"
+      parameters:
+        - name: id
+          schema:
+            type: integer
+            example: 0
+          in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmployeeRequestModel"
+      responses:
+        202:
+          description: "Success update an employee"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmployeeResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500: 
+          $ref: "#/components/responses/InternalErrorResponse"
+    delete:
+      summary: "Delete a employee"
+      parameters:
+        - name: id
+          schema:
+            type: integer
+            example: 0
+          in: query
+      responses:
+        204:
+          description: "Success delete an employee"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmployeeResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500: 
+          $ref: "#/components/responses/InternalErrorResponse"
+  /api/dishes:
+    get:
+      summary: "Get dishes"
+      parameters:
+        - name: from
+          schema:
+            type: integer
+            example: 0
+          in: query
+        - name: until
+          schema:
+            type: integer
+            example: 10
+          in: query
+      responses:
+        200:
+          description: "Success get dishs"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DishRequestModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500:
+          $ref: "#/components/responses/InternalErrorResponse"
+    post:
+      summary: "Create a dish"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DishRequestModel"
+      responses:
+        201:
+          description: "Success create business"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DishResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500:
+          $ref: "#/components/responses/InternalErrorResponse"
+    put:
+      summary: "Update a dish"
+      parameters:
+        - name: id
+          schema:
+            type: integer
+            example: 0
+          in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DishRequestModel"
+      responses:
+        202:
+          description: "Success update business"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DishResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500:
+          $ref: "#/components/responses/InternalErrorResponse"
+    delete:
+      summary: "Delete a dish"
+      parameters:
+        - name: id
+          schema:
+            type: integer
+            example: 0
+          in: query
+      responses:
+        204:
+          description: "Success delete business"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DishResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500:
+          $ref: "#/components/responses/InternalErrorResponse"
+  /api/meals:
+    get:
+      summary: "Get meals"
+      parameters:
+        - name: from
+          schema:
+            type: integer
+            example: 0
+          in: query
+        - name: until
+          schema:
+            type: integer
+            example: 10
+          in: query
+      responses:
+        200:
+          description: "Success get dishs"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DishRequestModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500:
+          $ref: "#/components/responses/InternalErrorResponse"
+    post:
+      summary: "Create a meal"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MealRequestModel"
+      responses:
+        201:
+          description: "Success create a meal"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DishResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500:
+          $ref: "#/components/responses/InternalErrorResponse"
+    put:
+      summary: "Update a meal"
+      parameters:
+        - name: id
+          schema:
+            type: integer
+            example: 0
+          in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MealRequestModel"
+      responses:
+        202:
+          description: "Success update a meal"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MealResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500:
+          $ref: "#/components/responses/InternalErrorResponse"
+    delete:
+      summary: "Delete a meal"
+      parameters:
+        - name: id
+          schema:
+            type: integer
+          in: query
+      responses:
+        204:
+          description: "Success delete a meal"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MealResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500:
+          $ref: "#/components/responses/InternalErrorResponse"
+components:
+  schemas:
+    BusinessRequestModel:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "business"
+    BusinessResponseModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 
+        name:
+          type: string
+          example: "business"
+    EmployeeRequestModel:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "employee"
+        business:
+          type: integer
+          example: 0
+    EmployeeResponseModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 0
+        name:
+          type: string
+          example: "employee"
+        business:
+          type: integer
+          example: 0
+    DishRequestModel:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "dish"
+        description:
+          type: string
+          example: "dish's description"
+    DishResponseModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 0
+        name:
+          type: string
+          example: "dish"
+        description:
+          type: string
+          example: "dish's description"
+    MealRequestModel:
+      type: object
+      properties:
+        employee:
+          type: integer
+          example: 0 
+        business:
+          type: integer
+          example: 0 
+    MealResponseModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 0 
+        employee:
+          type: integer
+          example: 0 
+        business:
+          type: integer
+          example: 0 
+  responses:
+    OkResponse:
+      description: "Ok"
+    UnauthorizedResponse:
+      description: "Unauthorized"
+      content: 
+        application/json:
+          schema: 
+            type: object
+            properties: 
+              message:
+                type: string
+                example: "unauthorized"
+    InternalErrorResponse:
+      description: "Internal error"
+      content: 
+        application/json:
+          schema: 
+            type: object
+            properties: 
+              message:
+                type: string
+                example: "internal error"
