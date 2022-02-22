@@ -346,6 +346,7 @@ paths:
         - name: id
           schema:
             type: integer
+            example: 0
           in: query
       responses:
         204:
