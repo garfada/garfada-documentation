@@ -24,7 +24,7 @@ paths:
             type: integer
             example: 0
           in: query
-        - name: until
+        - name: to
           schema:
             type: integer
             example: 10
@@ -120,7 +120,7 @@ paths:
             type: integer
             example: 0
           in: query
-        - name: until
+        - name: to
           schema:
             type: integer
             example: 10
@@ -210,7 +210,7 @@ paths:
             type: integer
             example: 0
           in: query
-        - name: until
+        - name: to
           schema:
             type: integer
             example: 10
@@ -306,7 +306,7 @@ paths:
             type: integer
             example: 0
           in: query
-        - name: until
+        - name: to
           schema:
             type: integer
             example: 10
