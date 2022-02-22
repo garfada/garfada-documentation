@@ -16,6 +16,8 @@ paths:
   /businesses:
     get:
       summary: "Get businesses"
+      tags:
+        - business
       parameters:
         - name: from
           schema:
@@ -42,6 +44,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     post:
       summary: "Create a business"
+      tags:
+        - business
       requestBody:
         content:
           application/json:
@@ -60,6 +64,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     put:
       summary: "Update a business"
+      tags:
+        - business
       parameters:
         - name: id
           schema:
@@ -84,6 +90,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
       summary: "Delete a business"
+      tags:
+        - business
       parameters:
         - name: id
           schema:
@@ -104,6 +112,8 @@ paths:
   /employees:
     get:
       summary: "Get employees"
+      tags:
+        - employee
       parameters:
         - name: from
           schema:
@@ -124,6 +134,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     post:
       summary: "Create a employee"
+      tags:
+        - employee
       requestBody:
         content:
           application/json:
@@ -142,6 +154,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     put:
       summary: "Update a employee"
+      tags:
+        - employee
       parameters:
         - name: id
           schema:
@@ -166,6 +180,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
       summary: "Delete a employee"
+      tags:
+        - employee
       parameters:
         - name: id
           schema:
@@ -186,6 +202,8 @@ paths:
   /dishes:
     get:
       summary: "Get dishes"
+      tags:
+        - dish
       parameters:
         - name: from
           schema:
@@ -212,6 +230,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     post:
       summary: "Create a dish"
+      tags:
+        - dish
       requestBody:
         content:
           application/json:
@@ -230,6 +250,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     put:
       summary: "Update a dish"
+      tags:
+        - dish
       parameters:
         - name: id
           schema:
@@ -254,6 +276,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
       summary: "Delete a dish"
+      tags:
+        - dish
       parameters:
         - name: id
           schema:
@@ -274,6 +298,8 @@ paths:
   /meals:
     get:
       summary: "Get meals"
+      tags:
+        - meal
       parameters:
         - name: from
           schema:
@@ -300,6 +326,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     post:
       summary: "Create a meal"
+      tags:
+        - meal
       requestBody:
         content:
           application/json:
@@ -318,6 +346,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     put:
       summary: "Update a meal"
+      tags:
+        - meal
       parameters:
         - name: id
           schema:
@@ -342,6 +372,8 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
       summary: "Delete a meal"
+      tags:
+        - meal
       parameters:
         - name: id
           schema:
