@@ -404,7 +404,7 @@ components:
       properties:
         id:
           type: integer
-          example: 
+          example: 0
         name:
           type: string
           example: "business"
