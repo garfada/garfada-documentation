@@ -8,10 +8,12 @@ info:
     name: MIT
   contact:
     email: garfada@protonmail.com
+security:
+  - JWT: []
 servers:
   - url: https://api.garfada.example/v1
 paths:
-  /api/businesses:
+  /businesses:
     get:
       summary: "Get businesses"
       parameters:
@@ -99,7 +101,7 @@ paths:
           $ref: "#/components/responses/UnauthorizedResponse"
         500: 
           $ref: "#/components/responses/InternalErrorResponse"
-  /api/employees:
+  /employees:
     get:
       summary: "Get employees"
       parameters:
@@ -181,7 +183,7 @@ paths:
           $ref: "#/components/responses/UnauthorizedResponse"
         500: 
           $ref: "#/components/responses/InternalErrorResponse"
-  /api/dishes:
+  /dishes:
     get:
       summary: "Get dishes"
       parameters:
@@ -269,7 +271,7 @@ paths:
           $ref: "#/components/responses/UnauthorizedResponse"
         500:
           $ref: "#/components/responses/InternalErrorResponse"
-  /api/meals:
+  /meals:
     get:
       summary: "Get meals"
       parameters:
@@ -459,3 +461,7 @@ components:
               message:
                 type: string
                 example: "internal error"
+  securitySchemes:
+    JWT:
+      type: http
+      scheme: bearer
