@@ -126,9 +126,15 @@ paths:
             example: 10
           in: query
       responses:
-        200: 
-          $ref: "#/components/responses/OkResponse"
-        401: 
+        200:
+          description: "Success to get employees"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EmployeeResponseModel"
+        401:
           $ref: "#/components/responses/UnauthorizedResponse"
         500: 
           $ref: "#/components/responses/InternalErrorResponse"
@@ -313,13 +319,13 @@ paths:
           in: query
       responses:
         200:
-          description: "Success get dishs"
+          description: "Success get meals"
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/DishRequestModel"
+                  $ref: "#/components/schemas/MealRequestModel"
         401:
           $ref: "#/components/responses/UnauthorizedResponse"
         500:
@@ -339,7 +345,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DishResponseModel"
+                $ref: "#/components/schemas/MealResponseModel"
         401:
           $ref: "#/components/responses/UnauthorizedResponse"
         500:
@@ -391,11 +397,35 @@ paths:
           $ref: "#/components/responses/UnauthorizedResponse"
         500:
           $ref: "#/components/responses/InternalErrorResponse"
+  /serve:
+    post:
+      summary: "Assign a meal to a employee"
+      tags:
+        - serve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServeRequestModel"
+      responses:
+        201:
+          description: "Success to assign a meal to employee"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServeResponseModel"
+        401:
+          $ref: "#/components/responses/UnauthorizedResponse"
+        500:
+          $ref: "#/components/responses/InternalErrorResponse"
 components:
   schemas:
     BusinessRequestModel:
       type: object
       properties:
+        code:
+          type: string
+          example: "00.000.000/0000-00"
         name:
           type: string
           example: "business"
@@ -405,12 +435,18 @@ components:
         id:
           type: integer
           example: 0
+        code:
+          type: string
+          example: "00.000.000/0000-00"
         name:
           type: string
           example: "business"
     EmployeeRequestModel:
       type: object
       properties:
+        code:
+          type: string
+          example: "000.000.000-00"
         name:
           type: string
           example: "employee"
@@ -423,6 +459,9 @@ components:
         id:
           type: integer
           example: 0
+        code:
+          type: string
+          example: "000.000.000-00"
         name:
           type: string
           example: "employee"
@@ -453,24 +492,59 @@ components:
     MealRequestModel:
       type: object
       properties:
-        employee:
-          type: integer
-          example: 0 
-        business:
-          type: integer
-          example: 0 
+        name:
+          type: string
+          example: "meal"
+        description:
+          type: string
+          example: "meal's description"
+        dishes:
+          type: array
+          items:
+            type: string
+            example: [1, 2, 3]
     MealResponseModel:
       type: object
       properties:
         id:
           type: integer
-          example: 0 
+          example: 0
+        name:
+          type: string
+          example: "meal"
+        description:
+          type: string
+          example: "meal's description"
+        dishes:
+          type: array
+          items:
+            type: string
+            example: [1, 2, 3]
+    ServeRequestModel:
+      type: object
+      properties:
+        meal:
+          type: integer
+          example: 0
         employee:
           type: integer
-          example: 0 
-        business:
+          example: 0
+    ServeResponseModel:
+      type: object
+      properties:
+        id:
           type: integer
-          example: 0 
+          example: 0
+        meal:
+          type: integer
+          example: 0
+        employee:
+          type: integer
+          example: 0
+        date:
+          type: string
+          format: date-time
+          example: "0000-00-00T00:00:00+00:00"
   securitySchemes:
     JWT:
       type: http
