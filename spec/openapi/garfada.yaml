@@ -8,6 +8,17 @@ info:
     name: MIT
   contact:
     email: garfada@protonmail.com
+tags:
+  - name: business
+    description: aggregate all routes related to business resource
+  - name: dish
+    description: aggregate all routes related to dish resource
+  - name: employee
+    description: aggregate all routes related to employee resource
+  - name: meal
+    description: aggregate all routes related to meal resource
+  - name: serve
+    description: aggregate all routes related to serve resource
 security:
   - JWT: []
 servers:
@@ -19,18 +30,10 @@ paths:
       tags:
         - business
       parameters:
-        - name: from
-          schema:
-            type: integer
-            example: 0
-          in: query
-        - name: to
-          schema:
-            type: integer
-            example: 10
-          in: query
+        - $ref: "#/components/parameters/from"
+        - $ref: "#/components/parameters/to"
       responses:
-        200:
+        "200":
           description: "Success to get businesses"
           content:
             application/json:
@@ -38,11 +41,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/BusinessResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500: 
+        "500": 
           $ref: "#/components/responses/InternalErrorResponse"
     post:
+      operationId: "1"
       summary: "Create a business"
       tags:
         - business
@@ -52,15 +56,15 @@ paths:
             schema:
               $ref: "#/components/schemas/BusinessRequestModel"
       responses:
-        201:
+        "201":
           description: "Success create business"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/BusinessResponseModel"
-        401: 
+        "401": 
           $ref: "#/components/responses/UnauthorizedResponse"
-        500: 
+        "500": 
           $ref: "#/components/responses/InternalErrorResponse"
     put:
       summary: "Update a business"
@@ -78,15 +82,15 @@ paths:
             schema:
               $ref: "#/components/schemas/BusinessRequestModel"
       responses:
-        202:
+        "202":
           description: "Success update business"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/BusinessResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500: 
+        "500": 
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
       summary: "Delete a business"
@@ -99,15 +103,15 @@ paths:
             example: 0
           in: query
       responses:
-        204:
+        "204":
           description: "Success delete business"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/BusinessResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500: 
+        "500": 
           $ref: "#/components/responses/InternalErrorResponse"
   /employees:
     get:
@@ -115,18 +119,10 @@ paths:
       tags:
         - employee
       parameters:
-        - name: from
-          schema:
-            type: integer
-            example: 0
-          in: query
-        - name: to
-          schema:
-            type: integer
-            example: 10
-          in: query
+        - $ref: "#/components/parameters/from"
+        - $ref: "#/components/parameters/to"
       responses:
-        200:
+        "200":
           description: "Success to get employees"
           content:
             application/json:
@@ -134,9 +130,9 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/EmployeeResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500: 
+        "500": 
           $ref: "#/components/responses/InternalErrorResponse"
     post:
       summary: "Create a employee"
@@ -148,15 +144,15 @@ paths:
             schema:
               $ref: "#/components/schemas/EmployeeRequestModel"
       responses:
-        201:
+        "201":
           description: "Success create an employee"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/EmployeeResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500:
+        "500":
           $ref: "#/components/responses/InternalErrorResponse"
     put:
       summary: "Update a employee"
@@ -174,15 +170,15 @@ paths:
             schema:
               $ref: "#/components/schemas/EmployeeRequestModel"
       responses:
-        202:
+        "202":
           description: "Success update an employee"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/EmployeeResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500: 
+        "500": 
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
       summary: "Delete a employee"
@@ -195,15 +191,15 @@ paths:
             example: 0
           in: query
       responses:
-        204:
+        "204":
           description: "Success delete an employee"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/EmployeeResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500: 
+        "500": 
           $ref: "#/components/responses/InternalErrorResponse"
   /dishes:
     get:
@@ -211,18 +207,10 @@ paths:
       tags:
         - dish
       parameters:
-        - name: from
-          schema:
-            type: integer
-            example: 0
-          in: query
-        - name: to
-          schema:
-            type: integer
-            example: 10
-          in: query
+        - $ref: "#/components/parameters/from"
+        - $ref: "#/components/parameters/to"
       responses:
-        200:
+        "200":
           description: "Success get dishs"
           content:
             application/json:
@@ -230,9 +218,9 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/DishRequestModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500:
+        "500":
           $ref: "#/components/responses/InternalErrorResponse"
     post:
       summary: "Create a dish"
@@ -244,15 +232,15 @@ paths:
             schema:
               $ref: "#/components/schemas/DishRequestModel"
       responses:
-        201:
+        "201":
           description: "Success create business"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/DishResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500:
+        "500":
           $ref: "#/components/responses/InternalErrorResponse"
     put:
       summary: "Update a dish"
@@ -270,15 +258,15 @@ paths:
             schema:
               $ref: "#/components/schemas/DishRequestModel"
       responses:
-        202:
+        "202":
           description: "Success update business"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/DishResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500:
+        "500":
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
       summary: "Delete a dish"
@@ -291,15 +279,15 @@ paths:
             example: 0
           in: query
       responses:
-        204:
+        "204":
           description: "Success delete business"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/DishResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500:
+        "500":
           $ref: "#/components/responses/InternalErrorResponse"
   /meals:
     get:
@@ -307,18 +295,10 @@ paths:
       tags:
         - meal
       parameters:
-        - name: from
-          schema:
-            type: integer
-            example: 0
-          in: query
-        - name: to
-          schema:
-            type: integer
-            example: 10
-          in: query
+        - $ref: "#/components/parameters/from"
+        - $ref: "#/components/parameters/to"
       responses:
-        200:
+        "200":
           description: "Success get meals"
           content:
             application/json:
@@ -326,9 +306,9 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/MealRequestModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500:
+        "500":
           $ref: "#/components/responses/InternalErrorResponse"
     post:
       summary: "Create a meal"
@@ -340,15 +320,15 @@ paths:
             schema:
               $ref: "#/components/schemas/MealRequestModel"
       responses:
-        201:
+        "201":
           description: "Success create a meal"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/MealResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500:
+        "500":
           $ref: "#/components/responses/InternalErrorResponse"
     put:
       summary: "Update a meal"
@@ -366,15 +346,15 @@ paths:
             schema:
               $ref: "#/components/schemas/MealRequestModel"
       responses:
-        202:
+        "202":
           description: "Success update a meal"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/MealResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500:
+        "500":
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
       summary: "Delete a meal"
@@ -387,15 +367,15 @@ paths:
             example: 0
           in: query
       responses:
-        204:
+        "204":
           description: "Success delete a meal"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/MealResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500:
+        "500":
           $ref: "#/components/responses/InternalErrorResponse"
   /serve:
     post:
@@ -408,17 +388,30 @@ paths:
             schema:
               $ref: "#/components/schemas/ServeRequestModel"
       responses:
-        201:
+        "201":
           description: "Success to assign a meal to employee"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServeResponseModel"
-        401:
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
-        500:
+        "500":
           $ref: "#/components/responses/InternalErrorResponse"
 components:
+  parameters:
+    from:
+      name: from
+      schema:
+        type: integer
+        example: 0
+      in: query
+    to:
+      name: to
+      schema:
+        type: integer
+        example: 10
+      in: query
   schemas:
     BusinessRequestModel:
       type: object
@@ -502,7 +495,7 @@ components:
           type: array
           items:
             type: string
-            example: [1, 2, 3]
+          example: ["1", "2", "3"]
     MealResponseModel:
       type: object
       properties:
@@ -519,7 +512,7 @@ components:
           type: array
           items:
             type: string
-            example: [1, 2, 3]
+          example: ["1", "2", "3"]
     ServeRequestModel:
       type: object
       properties:
