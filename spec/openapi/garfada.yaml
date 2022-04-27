@@ -26,7 +26,9 @@ servers:
 paths:
   /businesses:
     get:
+      operationId: "getBusiness"
       summary: "Get businesses"
+      description: "Get businesses"
       tags:
         - business
       parameters:
@@ -46,8 +48,9 @@ paths:
         "500": 
           $ref: "#/components/responses/InternalErrorResponse"
     post:
-      operationId: "1"
+      operationId: "createBusiness"
       summary: "Create a business"
+      description: "Create a business"
       tags:
         - business
       requestBody:
@@ -67,13 +70,16 @@ paths:
         "500": 
           $ref: "#/components/responses/InternalErrorResponse"
     put:
+      operationId: "updateBusiness"
       summary: "Update a business"
+      description: "Update a business"
       tags:
         - business
       parameters:
         - name: id
           schema:
             type: integer
+            minimum: 0
             example: 0
           in: query
       requestBody:
@@ -93,7 +99,9 @@ paths:
         "500": 
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
+      operationId: "deleteBusiness"
       summary: "Delete a business"
+      description: "Delete a business"
       tags:
         - business
       parameters:
@@ -115,7 +123,9 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
   /employees:
     get:
+      operationId: "getImployees"
       summary: "Get employees"
+      description: "Get imployees"
       tags:
         - employee
       parameters:
@@ -135,7 +145,9 @@ paths:
         "500": 
           $ref: "#/components/responses/InternalErrorResponse"
     post:
+      operationId: "createEmployee"
       summary: "Create a employee"
+      description: "Create a employee"
       tags:
         - employee
       requestBody:
@@ -155,7 +167,9 @@ paths:
         "500":
           $ref: "#/components/responses/InternalErrorResponse"
     put:
+      operationId: "updateEmployee"
       summary: "Update a employee"
+      description: "Update a employee"
       tags:
         - employee
       parameters:
@@ -181,7 +195,9 @@ paths:
         "500": 
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
+      operationId: "deleteEmployee"
       summary: "Delete a employee"
+      description: "Delete a employee"
       tags:
         - employee
       parameters:
@@ -203,7 +219,9 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
   /dishes:
     get:
+      operationId: "getDishes"
       summary: "Get dishes"
+      description: "Get dishes"
       tags:
         - dish
       parameters:
@@ -223,7 +241,9 @@ paths:
         "500":
           $ref: "#/components/responses/InternalErrorResponse"
     post:
+      operationId: "createDish"
       summary: "Create a dish"
+      description: "Create a dish"
       tags:
         - dish
       requestBody:
@@ -243,7 +263,9 @@ paths:
         "500":
           $ref: "#/components/responses/InternalErrorResponse"
     put:
+      operationId: "updateDish"
       summary: "Update a dish"
+      description: "Update a dish"
       tags:
         - dish
       parameters:
@@ -269,7 +291,9 @@ paths:
         "500":
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
+      operationId: "deleteDish"
       summary: "Delete a dish"
+      description: "Delete a dish"
       tags:
         - dish
       parameters:
@@ -291,7 +315,9 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
   /meals:
     get:
+      operationId: "getMeals"
       summary: "Get meals"
+      description: "Get meals"
       tags:
         - meal
       parameters:
@@ -311,7 +337,9 @@ paths:
         "500":
           $ref: "#/components/responses/InternalErrorResponse"
     post:
+      operationId: "createMeal"
       summary: "Create a meal"
+      description: "Create a meal"
       tags:
         - meal
       requestBody:
@@ -331,7 +359,9 @@ paths:
         "500":
           $ref: "#/components/responses/InternalErrorResponse"
     put:
+      operationId: "updateMeal"
       summary: "Update a meal"
+      description: "Update a meal"
       tags:
         - meal
       parameters:
@@ -357,13 +387,16 @@ paths:
         "500":
           $ref: "#/components/responses/InternalErrorResponse"
     delete:
+      operationId: "deleteMeal"
       summary: "Delete a meal"
+      description: "Delete a meal"
       tags:
         - meal
       parameters:
         - name: id
           schema:
             type: integer
+            minimum: 0
             example: 0
           in: query
       responses:
@@ -379,7 +412,9 @@ paths:
           $ref: "#/components/responses/InternalErrorResponse"
   /serve:
     post:
+      operationId: "serveMeal"
       summary: "Assign a meal to a employee"
+      description: "Assign a meal to a employee"
       tags:
         - serve
       requestBody:
@@ -404,12 +439,14 @@ components:
       name: from
       schema:
         type: integer
+        minimum: 0
         example: 0
       in: query
     to:
       name: to
       schema:
         type: integer
+        minimum: 0
         example: 10
       in: query
   schemas:
@@ -422,6 +459,9 @@ components:
         name:
           type: string
           example: "business"
+      required:
+        - code
+        - name
     BusinessResponseModel:
       type: object
       properties:
@@ -446,6 +486,10 @@ components:
         business:
           type: integer
           example: 0
+      required:
+        - code
+        - name
+        - business
     EmployeeResponseModel:
       type: object
       properties:
@@ -470,6 +514,9 @@ components:
         description:
           type: string
           example: "dish's description"
+      required:
+        - name
+        - description
     DishResponseModel:
       type: object
       properties:
@@ -496,6 +543,10 @@ components:
           items:
             type: string
           example: ["1", "2", "3"]
+      required:
+        - name
+        - description
+        - dishes
     MealResponseModel:
       type: object
       properties:
@@ -518,21 +569,29 @@ components:
       properties:
         meal:
           type: integer
+          minimum: 0
           example: 0
         employee:
           type: integer
+          minimum: 0
           example: 0
+      required:
+        - meal
+        - employee
     ServeResponseModel:
       type: object
       properties:
         id:
           type: integer
+          minimum: 0
           example: 0
         meal:
           type: integer
+          minimum: 0
           example: 0
         employee:
           type: integer
+          minimum: 0
           example: 0
         date:
           type: string
