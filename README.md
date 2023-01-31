@@ -2,9 +2,9 @@
         <img src="media/garfada_banner.png"  alt="Garfada's logo"/>
 </p>
 
-# Garfada's Documentation
+# Garfada's assets
 
-This repository contains or will contain all Garfada's documentations, since diagrams, api contracts, layout definitions,
+This repository contains or will contain all Garfada's assets, since diagrams, api contracts, layout definitions,
 style guides, features requested and so on.
 
 ## Content
